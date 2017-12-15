@@ -13,13 +13,13 @@ import java.util.Random
 
 class DatabaseAccess {
     //properties
-    private var openHelper: DatabaseOpenHelper
-    private lateinit var database: SQLiteDatabase
+    private var openHelper: SQLiteOpenHelper? = null
+    private var database: SQLiteDatabase? = null
 
     //creating a "static" field
     companion object {
-        lateinit var instance: DatabaseAccess
-        fun getInstance(context: Context): DatabaseAccess {
+        private var instance: DatabaseAccess? = null
+        fun getInstance(context: Context): DatabaseAccess? {
             if (DatabaseAccess.instance == null) {
                 DatabaseAccess.instance = DatabaseAccess(context)
             }
@@ -32,28 +32,31 @@ class DatabaseAccess {
     }
 
     fun open() {
-        this.database = openHelper.getWritableDatabase()
+        this.database = openHelper!!.writableDatabase
     }
 
     fun close() {
         if (database != null) {
-            this.database.close()
+            this.database?.close()
         }
     }
 
     fun getFact(table: String): String {
-        var id: Int = generateRandomID()
-        var cursor: Cursor = database.rawQuery("SELECT * FROM " + table + " WHERE fact_id=" + id, null)
-        var fact: String = cursor.getString(cursor.getColumnIndex("fact_desc"))
+        val id: Int = generateRandomID()
+        val selArgs: Array<String> = Array(1) {{id}.toString()}
+        val cursor: Cursor = database!!.rawQuery("SELECT * FROM " + table, null)
+        cursor.moveToPosition(id)
+        val rows = cursor.count
+        val fact: String = cursor.getString(cursor.getColumnIndex("fact_desc"))
         cursor.close()
         return fact
     }
 
     private fun generateRandomID(): Int {
         val random = Random()
-        val db: SQLiteDatabase = openHelper.readableDatabase
-        var numEntries: Long = DatabaseUtils.queryNumEntries(db, "space")
-        return random.nextInt(numEntries.toInt()-1) + numEntries.toInt() + 1
+        val db: SQLiteDatabase = openHelper!!.readableDatabase
+        val numEntries: Long = DatabaseUtils.queryNumEntries(db, "space")
+        return random.nextInt(numEntries.toInt()-1) + 1
     }
 }
 

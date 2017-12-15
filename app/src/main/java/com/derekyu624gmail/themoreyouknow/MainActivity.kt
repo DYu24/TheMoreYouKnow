@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.app_bar_main.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var textView: TextView
-    private lateinit var databaseAccess: DatabaseAccess
+    private var databaseAccess: DatabaseAccess? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         this.textView = findViewById(R.id.factArea)
 
         databaseAccess = DatabaseAccess.getInstance(this)
-        databaseAccess.open()
+        databaseAccess?.open()
 
         /*
         fab.setOnClickListener { view ->
@@ -91,7 +91,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     fun onButtonTap(v: View) {
         this.textView.setText(null)
-        val fact: String = databaseAccess.getFact("space")
-        this.textView.setText(fact)
+        val fact: String = databaseAccess!!.getFact("space")
+        val str = "hello"
+        if (fact != null)
+            this.textView.setText(fact)
+        else
+            this.textView.setText(str)
     }
 }
