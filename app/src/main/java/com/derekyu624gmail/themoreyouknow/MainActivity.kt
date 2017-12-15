@@ -6,6 +6,7 @@ import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
+import android.util.TypedValue
 import android.view.View
 import android.view.Menu
 import android.view.MenuItem
@@ -92,10 +93,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     fun onButtonTap(v: View) {
         this.textView.setText(null)
         val fact: String = databaseAccess!!.getFact("space")
-        val str = "hello"
-        if (fact != null)
-            this.textView.setText(fact)
-        else
-            this.textView.setText(str)
+        this.textView.setText(fact)
+
     }
 }
