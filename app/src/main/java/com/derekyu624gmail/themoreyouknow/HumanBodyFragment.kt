@@ -35,7 +35,7 @@ class HumanBodyFragment : Fragment() {
 
     fun onButtonTap(v: View) {
         this.textView.setText(null)
-        val fact: String = databaseAccess!!.getFact("space")
+        val fact: String = databaseAccess!!.getFact("humanbody")
         this.textView.setText(fact)
     }
 

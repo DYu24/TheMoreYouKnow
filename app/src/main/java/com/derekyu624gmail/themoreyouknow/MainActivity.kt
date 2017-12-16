@@ -23,9 +23,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setContentView(R.layout.activity_main)
 
         //Set the fragment initially
-        var spaceFrag = SpaceFragment()
+        var humanFrag = HumanBodyFragment()
         var fragmentTransaction: android.support.v4.app.FragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragment_container, spaceFrag)
+        fragmentTransaction.replace(R.id.fragment_container, humanFrag)
         fragmentTransaction.commit()
 
         setSupportActionBar(toolbar)

@@ -42,20 +42,18 @@ class DatabaseAccess {
     }
 
     fun getFact(table: String): String {
-        val id: Int = generateRandomID()
-        val selArgs: Array<String> = Array(1) {{id}.toString()}
+        val id: Int = generateRandomID(table)
         val cursor: Cursor = database!!.rawQuery("SELECT * FROM " + table, null)
         cursor.moveToPosition(id)
-        val rows = cursor.count
         val fact: String = cursor.getString(cursor.getColumnIndex("fact_desc"))
         cursor.close()
         return fact
     }
 
-    private fun generateRandomID(): Int {
+    private fun generateRandomID(table: String): Int {
         val random = Random()
         val db: SQLiteDatabase = openHelper!!.readableDatabase
-        val numEntries: Long = DatabaseUtils.queryNumEntries(db, "space")
+        val numEntries: Long = DatabaseUtils.queryNumEntries(db, table)
         return random.nextInt(numEntries.toInt()-1) + 1
     }
 }

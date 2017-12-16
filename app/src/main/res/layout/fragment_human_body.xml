@@ -33,7 +33,6 @@
         android:layout_width="188dp"
         android:layout_height="66dp"
         android:background="@color/colorAccent"
-        android:onClick="onButtonTap"
         android:text="FACT"
         android:textColor="@android:color/background_light"
         android:layout_centerHorizontal="true"
