@@ -76,6 +76,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 fragmentTransaction.replace(R.id.fragment_container, spaceFrag)
                 fragmentTransaction.commit()
             }
+            R.id.nav_human -> {
+                var humanFrag = HumanBodyFragment()
+                var fragmentTransaction: android.support.v4.app.FragmentTransaction = supportFragmentManager.beginTransaction()
+                fragmentTransaction.replace(R.id.fragment_container, humanFrag)
+                fragmentTransaction.commit()
+            }
             R.id.nav_sources -> {
                 var sourcesFrag= SourcesFragment()
                 var fragmentTransaction: android.support.v4.app.FragmentTransaction = supportFragmentManager.beginTransaction()

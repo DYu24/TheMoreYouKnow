@@ -5,6 +5,16 @@
     tools:context="com.derekyu624gmail.themoreyouknow.HumanBodyFragment">
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Human Body"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        android:layout_margin="20dp"/>
+
+    <TextView
         android:id="@+id/factArea"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

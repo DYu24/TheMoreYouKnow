@@ -38,7 +38,6 @@ class SpaceFragment : Fragment() {
         this.textView.setText(null)
         val fact: String = databaseAccess!!.getFact("space")
         this.textView.setText(fact)
-
     }
 
 }// Required empty public constructor
