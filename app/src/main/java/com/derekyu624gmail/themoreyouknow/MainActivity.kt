@@ -69,17 +69,22 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
-
-            R.id.nav_space -> {
-                var spaceFrag = SpaceFragment()
+            R.id.nav_history -> {
+                var historyFrag = HistoryFragment()
                 var fragmentTransaction: android.support.v4.app.FragmentTransaction = supportFragmentManager.beginTransaction()
-                fragmentTransaction.replace(R.id.fragment_container, spaceFrag)
+                fragmentTransaction.replace(R.id.fragment_container, historyFrag)
                 fragmentTransaction.commit()
             }
             R.id.nav_human -> {
                 var humanFrag = HumanBodyFragment()
                 var fragmentTransaction: android.support.v4.app.FragmentTransaction = supportFragmentManager.beginTransaction()
                 fragmentTransaction.replace(R.id.fragment_container, humanFrag)
+                fragmentTransaction.commit()
+            }
+            R.id.nav_space -> {
+                var spaceFrag = SpaceFragment()
+                var fragmentTransaction: android.support.v4.app.FragmentTransaction = supportFragmentManager.beginTransaction()
+                fragmentTransaction.replace(R.id.fragment_container, spaceFrag)
                 fragmentTransaction.commit()
             }
             R.id.nav_sources -> {

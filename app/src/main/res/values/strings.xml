@@ -95,10 +95,12 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="sources">
-        "Space Facts:\n"
-        "\thttp://www.amazingspacefacts.50webs.com/\n\n"
+        "History Facts:\n"
+        "\thttps://funfactz.com/historical-facts/\n\n"
         "Human Body Facts:\n"
         "\thttps://www.factretriever.com/body-facts\n\n"
+        "Space Facts:\n"
+        "\thttp://www.amazingspacefacts.50webs.com/\n\n"
     </string>
 
     <!-- TODO: Remove or change this placeholder text -->
